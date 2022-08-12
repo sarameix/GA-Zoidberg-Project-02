@@ -17,7 +17,7 @@ const chefSeed = require('../models/chefs_seed.js');
 // ROUTES //
 ////////////
 
-// Delete Individual Author Route
+// Delete Individual Chef Route
 router.delete('/:id', (req, res)=>{
     Chef.findByIdAndRemove(req.params.id, (error, foundChef) => {
         res.redirect('/chefs');
@@ -55,7 +55,7 @@ router.get('/new', (req, res) => {
 
 // Get Individual Chef Page Route
 router.get('/:id', (req, res) => {
-	Chef.findById(req.params.id, (err, foundChef) => {
+	Chef.findById(req.params.id, (error, foundChef) => {
 		res.render('chefs/show.ejs', {
 			chef: foundChef,
             pageTitle: foundChef.name
@@ -65,7 +65,7 @@ router.get('/:id', (req, res) => {
 
 // Get Edit Individual Chef Page Route
 router.get('/:id/edit', (req, res)=>{
-	Chef.findById(req.params.id, (err, foundChef) => {
+	Chef.findById(req.params.id, (error, foundChef) => {
 		res.render('chefs/edit.ejs', {
 			chef: foundChef,
             pageTitle: "Edit " + foundChef.name
@@ -79,13 +79,13 @@ router.post('/', (req, res) => {
     req.body.recipes = [];
 
     // Create New Chef in Collection and Redirect to Chefs Index
-    Chef.create(req.body, (err, createdChef) => {
+    Chef.create(req.body, (error, createdChef) => {
 		res.redirect('/chefs');
 	});
 });
 
 // Put Update Individual Chef Route
-router.put('/:id', (req, res)=>{
+router.put('/:id', (req, res) => {
 	Chef.findByIdAndUpdate(
         req.params.id,
         req.body,

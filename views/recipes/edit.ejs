@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <%- include ('../partials/head.ejs') %>
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li>
+						<a href="/">Home</a>
+					</li>
+                    <li>
+                        <a href="/recipes/new">Add New Recipe</a>
+                    </li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+            <!-- Script Making Functions for Adding Input Boxes Dynamically -->
+            <script>
+                // * I used this Stack Overflow article to figure this out: *
+                // https://stackoverflow.com/questions/42015443/new-input-on-button-click/42015509
+
+                // Variable Tracking How Many Ingredients Exist
+                let ingredientCount = 100;
+                let directionsCount = 100;
+
+                // Function Adding Ingredient Input
+                const addIngredientInput = () => {
+                    ingredientCount++;
+
+                    let newDiv = document.createElement("div");
+                    newDiv.setAttribute("id", "edit-ingredient-" + ingredientCount + "-div");
+                    document.getElementById("edit-add-new-ingredients").appendChild(newDiv);
+
+                    let newInput = document.createElement("input");
+                    newInput.setAttribute("type", "text");
+                    newInput.setAttribute("name", "ingredient" + ingredientCount);
+                    newInput.setAttribute("placeholder", "Ingredient");
+                    newDiv.appendChild(newInput);
+                };
+
+                // Function Adding Directions Input
+                const addDirectionInput = () => {
+                    directionsCount++;
+
+                    let newDiv = document.createElement("div");
+                    newDiv.setAttribute("id", "edit-direction-" + directionsCount + "-div");
+                    document.getElementById("edit-add-new-directions").appendChild(newDiv);
+
+                    let newInput = document.createElement("input");
+                    newInput.setAttribute("type", "text");
+                    newInput.setAttribute("name", "direction" + directionsCount);
+                    newInput.setAttribute("placeholder", "Direction");
+                    newDiv.appendChild(newInput);
+                };
+            </script>
+            
+            <h1>Edit <%=recipe.name%></h1>
+			<form action="/recipes/<%=recipe._id%>?_method=PUT"  method="POST">
+				<input type="text" name="name" value="<%=recipe.name%>" placeholder="Recipe Name" /><br/>
+                <input type="text" name="yield" value="<%=recipe.yield%>" placeholder="Yield (In Servings)" /><br/>
+                <input type="number" name="hours" min=0 value="<%=Math.round(recipe.time / 60)%>" placeholder="Hours" />
+                <input type="number" name="minutes" min=0 value="<%=recipe.time % 60%>" placeholder="Minutes" /><br/>
+                <input type="text" name="image" value="<%=recipe.image%>" placeholder="Recipe Image URL" /><br/>
+                <textarea name="description" placeholder="Type Description Here..."><%=recipe.description%></textarea><br/>
+                <div id="edit-add-new-ingredients">
+                    <% for (let i = 0; i < recipe.ingredients.length; i++) { %>
+                        <div id="edit-ingredient-<%=i+1%>-div">
+                            <input type="text" name="ingredient<%=i+1%>" value="<%=recipe.ingredients[i]%>" placeholder="Ingredient">
+                        </div>
+                    <% } %>
+                </div>
+                <input type="button" value="+ Add Ingredient" onClick="addIngredientInput()"><br/>
+                <div id="edit-add-new-directions">
+                    <% for (let i = 0; i < recipe.directions.length; i++) { %>
+                        <div id="edit-direction-<%=i+1%>-div">
+                            <textarea name="direction<%=i+1%>" placeholder="Direction"><%=recipe.directions[i]%></textarea>
+                        </div>
+                    <% } %>
+                </div>
+                <input type="button" value="+ Add Direction" onClick="addDirectionInput()"><br/>
+                <input type="submit" value="Update Recipe"/>
+			</form>
+		</main>
+	</body>
+</html>
