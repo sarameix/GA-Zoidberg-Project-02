@@ -17,9 +17,16 @@ const chefSeed = require('../models/chefs_seed.js');
 // ROUTES //
 ////////////
 
+// Delete Individual Author Route
+router.delete('/:id', (req, res)=>{
+    Chef.findByIdAndRemove(req.params.id, (error, foundChef) => {
+        res.redirect('/chefs');
+    });
+});
+
 // Get Chefs Index Route
-router.get('/', (req, res)=>{
-	Chef.find({}, (err, foundChefs)=>{
+router.get('/', (req, res) => {
+	Chef.find({}, (error, foundChefs) => {
 		res.render('chefs/index.ejs', {
 			chefs: foundChefs,
             pageTitle: "Our Chefs"
@@ -28,7 +35,7 @@ router.get('/', (req, res)=>{
 });
 
 // Get Chefs Seed Route
-router.get('/seed', (req, res)=>{
+router.get('/seed', (req, res) => {
     Chef.create(
         chefSeed, 
         (error, data) => {
@@ -38,7 +45,7 @@ router.get('/seed', (req, res)=>{
 });
 
 // Get New Chef Route
-router.get('/new', (req, res)=>{
+router.get('/new', (req, res) => {
 	res.render('chefs/new.ejs',
         {
             pageTitle: "Add New Chef"
@@ -47,7 +54,7 @@ router.get('/new', (req, res)=>{
 });
 
 // Get Individual Chef Page Route
-router.get('/:id', (req, res)=>{
+router.get('/:id', (req, res) => {
 	Chef.findById(req.params.id, (err, foundChef) => {
 		res.render('chefs/show.ejs', {
 			chef: foundChef,
@@ -56,14 +63,35 @@ router.get('/:id', (req, res)=>{
 	});
 });
 
+// Get Edit Individual Chef Page Route
+router.get('/:id/edit', (req, res)=>{
+	Chef.findById(req.params.id, (err, foundChef) => {
+		res.render('chefs/edit.ejs', {
+			chef: foundChef,
+            pageTitle: "Edit " + foundChef.name
+		});
+	});
+});
+
 // Post New Chef Route
-router.post('/', (req, res)=>{
+router.post('/', (req, res) => {
     // Add Recipes Key Value Pair to Inputted Info
     req.body.recipes = [];
 
     // Create New Chef in Collection and Redirect to Chefs Index
-    Chef.create(req.body, (err, createdChef)=>{
+    Chef.create(req.body, (err, createdChef) => {
 		res.redirect('/chefs');
+	});
+});
+
+// Put Update Individual Chef Route
+router.put('/:id', (req, res)=>{
+	Chef.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true },
+        (error, foundChef) => {
+		    res.redirect('/chefs/' + foundChef._id);
 	});
 });
 

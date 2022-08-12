@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <%- include ('../partials/head.ejs') %>
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li>
+						<a href="/">Home</a>
+					</li>
+                    <li>
+                        <a href="/chefs/new">Add New Chef</a>
+                    </li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+            <h1>Edit <%=chef.name%></h1>
+			<form action="/chefs/<%=chef._id%>?_method=PUT" method="POST">
+				<input type="text" name="name" value="<%=chef.name%>" placeholder="Name" /><br/>
+                <input type="text" name="image" value="<%=chef.image%>" placeholder="Profile Picture URL" /><br/>
+                <textarea name="bio" placeholder="Type Bio Here..."><%=chef.bio%></textarea><br/>
+                <input type="submit" value="Submit Changes"/>
+			</form>
+		</main>
+	</body>
+</html>

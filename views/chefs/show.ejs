@@ -19,8 +19,20 @@
 		</header>
         <main>
             <h1><%=chef.name%></h1>
+            <section>
+                <form action="/chefs/<%=chef._id%>/edit" method="GET">
+                    <input type="submit" value="Edit"/>
+                </form>
+                <form action="/chefs/<%=chef._id%>?_method=DELETE" method="post">
+                    <input type="submit" value="Delete"/>
+                </form>
+            </section>  
             <img src="<%=chef.image%>">
             <p><%=chef.bio%></p>
+            <h2>Recipes</h2>
+            <% for (let i = 0; i < chef.recipes; i++) { %>
+                <h4><%=chef.recipes[i].name%></h4>
+            <% } %>
         </main>        
 	</body>
 </html>
