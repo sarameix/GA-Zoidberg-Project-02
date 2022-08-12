@@ -10,7 +10,11 @@ const Recipe = require('./recipes.js');
 ////////////////////////
 
 const chefSchema = mongoose.Schema({
-	name: { type: String, required: true },
+	name: { 
+        type: String,
+        required: true,
+        unique: true
+    },
     bio: { type: String },
     image: { type: String },
 	recipes: [Recipe.schema]
