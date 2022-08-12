@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <%- include ('../partials/head.ejs') %>
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li>
+						<a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/chefs">Our Chefs</a>
+					</li>
+                    <li>
+                        <a href="/chefs/new">Add New Chef</a>
+                    </li>
+				</ul>
+			</nav>
+		</header>
+        <main>
+            <h1><%=chef.name%></h1>
+            <img src="<%=chef.image%>">
+            <p><%=chef.bio%></p>
+        </main>        
+	</body>
+</html>

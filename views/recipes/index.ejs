@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <%- include ('../partials/head.ejs') %>
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li>
+						<a href="/">Home</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+        <main>
+            <h1>Our Recipes</h1>
+            <ul>
+                <% for(let i = 0; i < recipes.length; i++){ %>
+                    <li>
+                        <h3><%=recipes[i].name%></h3>
+                    </li>
+                <% } %>
+            </ul>
+        </main>        
+	</body>
+</html>

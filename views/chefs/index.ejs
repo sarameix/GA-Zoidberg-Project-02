@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <%- include ('../partials/head.ejs') %>
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li>
+						<a href="/">Home</a>
+					</li>
+                    <li>
+                        <a href="/chefs/new">Add New Chef</a>
+                    </li>
+				</ul>
+			</nav>
+		</header>
+        <main>
+            <h1>Our Chefs</h1>
+            <ul>
+                <% for(let i = 0; i < chefs.length; i++){ %>
+                    <li>
+                        <a href="/chefs/<%=chefs[i]._id%>"><%=chefs[i].name%></a>
+                    </li>
+                <% } %>
+            </ul>
+        </main>        
+	</body>
+</html>

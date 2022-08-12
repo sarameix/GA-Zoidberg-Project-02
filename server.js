@@ -69,7 +69,9 @@ app.use('/recipes', recipesController);
 
 // Landing Page -> localhost:3000
 app.get('/' , (req, res) => {
-  res.send('Welcome to Potluck!');
+  res.render('index.ejs', {
+    pageTitle: "Potluck Home"
+  });
 });
 
 ////////////////////
