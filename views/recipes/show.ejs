@@ -37,10 +37,10 @@
             <% if (recipe.time < 60) { %>
                 <h3>Time: <%=recipe.time%> Minutes</h3>
             <% } else { %>
-            <%      if (Math.round(recipe.time / 60) === 1) { %>
+            <%      if (Math.floor(recipe.time / 60) === 1) { %>
                         <h3>Time: 1 Hour <%=recipe.time % 60%> Minutes</h3>
             <%      } else { %>
-                        <h3>Time: <%=Math.round(recipe.time / 60)%> Hours <%=recipe.time % 60%> Minutes</h3>
+                        <h3>Time: <%=Math.floor(recipe.time / 60)%> Hours <%=recipe.time % 60%> Minutes</h3>
             <%      } %>
             <% } %>
             <p><%=recipe.description%></p>
