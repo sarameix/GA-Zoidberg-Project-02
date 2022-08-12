@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 
 const recipeSchema = mongoose.Schema({
 	name: { type: String, required: true },
-    yield: { type: Number, required: true },
+    yield: { type: String, required: true },
     time: { type: Number, required: true },
     image: { type: String },
     description: { type: String },
