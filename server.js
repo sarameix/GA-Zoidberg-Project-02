@@ -63,11 +63,15 @@ app.use('/chefs', chefsController);
 const recipesController = require('./controllers/recipes.js');
 app.use('/recipes', recipesController);
 
+// Seed Controller
+const seedController = require('./controllers/seed.js');
+app.use('/seed', seedController);
+
 ////////////
 // ROUTES //
 ////////////
 
-// Landing Page -> localhost:3000
+// Landing Page
 app.get('/' , (req, res) => {
   res.render('index.ejs', {
     pageTitle: "Potluck Home"

@@ -34,16 +34,6 @@ router.get('/', (req, res)=>{
 	})
 });
 
-// Get Recipes Seed Route
-router.get('/seed', (req, res)=>{
-    Recipe.create(
-        recipeSeed, 
-        (error, data) => {
-            res.redirect('/');
-        }
-    );
-});
-
 // Get New Recipe Route
 router.get('/new', (req, res) => {
     Chef.find({}, (error, allChefs)=>{

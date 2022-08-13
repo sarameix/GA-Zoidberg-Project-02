@@ -34,16 +34,6 @@ router.get('/', (req, res) => {
 	})
 });
 
-// Get Chefs Seed Route
-router.get('/seed', (req, res) => {
-    Chef.create(
-        chefSeed, 
-        (error, data) => {
-            res.redirect('/');
-        }
-    );
-});
-
 // Get New Chef Route
 router.get('/new', (req, res) => {
 	res.render('chefs/new.ejs',
