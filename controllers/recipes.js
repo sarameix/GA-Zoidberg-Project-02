@@ -46,29 +46,39 @@ router.get('/seed', (req, res)=>{
 
 // Get New Recipe Route
 router.get('/new', (req, res) => {
-	res.render('recipes/new.ejs',
-        {
+    Chef.find({}, (error, allChefs)=>{
+        res.render('recipes/new.ejs', {
+            chefs: allChefs,
             pageTitle: "Add New Recipe"
-        }
-    );
+        });
+    });
 });
 
 // Get Individual Recipe Page Route
 router.get('/:id', (req, res) => {
-	Recipe.findById(req.params.id, (error, foundRecipe) => {
-		res.render('recipes/show.ejs', {
-			recipe: foundRecipe,
-            pageTitle: foundRecipe.name
-		});
-	});
+    Recipe.findById(req.params.id, (error, foundRecipe) => {
+        Chef.findOne({'recipes._id':req.params.id}, (error, foundChef) => {
+            res.render('recipes/show.ejs', {
+                chef: foundChef,
+                recipe: foundRecipe,
+                pageTitle: foundRecipe.name
+            });
+        })
+    });
 });
 
 // Get Edit Individual Recipe Page Route
 router.get('/:id/edit', (req, res)=>{
-	Recipe.findById(req.params.id, (error, foundRecipe) => {
-		res.render('recipes/edit.ejs', {
-			recipe: foundRecipe,
-            pageTitle: "Edit " + foundRecipe.name
+    Recipe.findById(req.params.id, (error, foundRecipe)=>{
+		Chef.find({}, (error, allChefs)=>{
+			Chef.findOne({'recipes._id':req.params.id}, (error, foundRecipeChef)=>{
+				res.render('recipes/edit.ejs', {
+					recipe: foundRecipe,
+					chefs: allChefs,
+					recipeChef: foundRecipeChef,
+                    pageTitle: "Edit " + foundRecipe.name
+				});
+			});
 		});
 	});
 });
@@ -104,9 +114,14 @@ router.post('/', (req, res) => {
     delete req.body.minutes;
 
     // Create New Chef in Collection and Redirect to Chefs Index
-    Recipe.create(req.body, (error, createdRecipe) => {
-		res.redirect('/recipes');
-	});
+    Chef.findById(req.body.chefID, (error, foundChef) => {
+        Recipe.create(req.body, (error, createdRecipe) => {
+            foundChef.recipes.push(createdRecipe);
+            foundChef.save((error, data)=>{
+                res.redirect('/recipes');
+            });
+        });
+    });
 });
 
 // Put Update Individual Recipe Route
@@ -140,13 +155,27 @@ router.put('/:id', (req, res) => {
     delete req.body.minutes;
 
     // Find Recipe by ID and Update with req.body
-    Recipe.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        { new: true },
-        (error, foundRecipe) => {
-		    res.redirect('/recipes/' + foundRecipe._id);
-	});
+    Recipe.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedRecipe) => {
+        Chef.findOne({ 'recipes._id' : req.params.id }, (error, foundChef) => {
+            if (foundChef._id.toString() !== req.body.chefID) {
+                foundChef.recipes.id(req.params.id).remove();
+                foundChef.save((error, savedFoundChef) => {
+                    Chef.findById(req.body.chefID, (error, newChef)=>{
+                        newChef.recipes.push(updatedRecipe);
+                        newChef.save((error, savedNewChef) => {
+                            res.redirect('/recipes/' + req.params.id);
+                        });
+                    });
+                });
+            } else {
+                foundChef.recipes.id(req.params.id).remove();
+                foundChef.recipes.push(updatedRecipe);
+                foundChef.save((error, data)=>{
+                    res.redirect('/recipes/' + req.params.id);
+                });
+            }
+        });
+    });
 });
 
 ///////////////////////

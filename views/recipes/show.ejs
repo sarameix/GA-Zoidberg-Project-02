@@ -19,6 +19,7 @@
 		</header>
         <main>
             <h1><%=recipe.name%></h1>
+            <h2>By <a href="/chefs/<%=chef._id%>"><%=chef.name%></a></h2>
 
             <section>
                 <form action="/recipes/<%=recipe._id%>/edit" method="GET">

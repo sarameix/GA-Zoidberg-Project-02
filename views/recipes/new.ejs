@@ -59,6 +59,11 @@
             <h1>Create New Recipe</h1>
 			<form action="/recipes" method="POST">
 				<input type="text" name="name" placeholder="Recipe Name" /><br/>
+                <select name="chefID">
+                    <% for(let i = 0; i < chefs.length; i++) { %>
+                        <option value="<%=chefs[i]._id%>"><%=chefs[i].name%></option>
+                    <% } %>
+                </select><br/>
                 <input type="text" name="yield" placeholder="Yield (In Servings)" /><br/>
                 <input type="number" name="hours" min=0 placeholder="Hours" />
                 <input type="number" name="minutes" min=0 placeholder="Minutes" /><br/>

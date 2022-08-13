@@ -30,8 +30,8 @@
             <img src="<%=chef.image%>">
             <p><%=chef.bio%></p>
             <h2>Recipes</h2>
-            <% for (let i = 0; i < chef.recipes; i++) { %>
-                <h4><%=chef.recipes[i].name%></h4>
+            <% for (let i = 0; i < chef.recipes.length; i++) { %>
+                <a href="/recipes/<%=chef.recipes[i]._id%>"><%=chef.recipes[i].name%></a>
             <% } %>
         </main>        
 	</body>
