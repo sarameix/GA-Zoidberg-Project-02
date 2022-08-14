@@ -2,21 +2,7 @@
 <html>
     <%- include ('../partials/head.ejs') %>
 	<body>
-		<header>
-			<nav>
-				<ul>
-					<li>
-						<a href="/">Home</a>
-                    </li>
-                    <li>
-                        <a href="/recipes">Our Recipes</a>
-					</li>
-                    <li>
-                        <a href="/recipes/new">Add New Recipe</a>
-                    </li>
-				</ul>
-			</nav>
-		</header>
+		<%- include ('../partials/nav.ejs') %>
         <main>
             <h1><%=recipe.name%></h1>
             <h2>By <a href="/chefs/<%=chef._id%>"><%=chef.name%></a></h2>

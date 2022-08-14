@@ -1,46 +1,40 @@
 <!DOCTYPE html>
 <html>
     <%- include ('./partials/head.ejs') %>
-	<body>
-		<header>
-			<nav>
-			</nav>
-		</header>
-        <main class="home-main">
-            <div class="home-header-container">
-                <h1 class="home-header">Welcome to</h1>
-                <h1 class="home-header home-logo">Potluck</h1>
-            </div>
-            <div class="home-body">
-                <div class="action-container">
-                    <div class="action-header">
-                        <h2 class="action-title">Users</h2>
-                    </div>
-                    <div class="action-body">
-                        <form action="/" method="GET">
-                            <input class="action-input" type="submit" value="Login"/>
-                        </form>
-                        <h3 class="action-or">OR</h3>
-                        <form action="/" method="GET">
-                            <input class="action-input" type="submit" value="Sign Up"/>
-                        </form>
-                    </div>
+	<body class="home-master-container">
+        <div class="home-header-container">
+            <h1 class="home-header">Welcome to</h1>
+            <h1 class="home-header home-logo">Potluck</h1>
+        </div>
+        <div class="home-body">
+            <div class="action-container">
+                <div class="action-header">
+                    <h2 class="action-title">Users</h2>
                 </div>
-                <div class="action-container">
-                    <div class="action-header">
-                        <h2 class="action-title">Guests</h2>
-                    </div>
-                    <div class="action-body">
-                        <form action="/chefs" method="GET">
-                            <input class="action-input" type="submit" value="View Chefs"/>
-                        </form>
-                        <h3 class="action-or">OR</h3>
-                        <form action="/recipes" method="GET">
-                            <input class="action-input" type="submit" value="View Recipes"/>
-                        </form>
-                    </div>
+                <div class="action-body">
+                    <form action="/" method="GET">
+                        <input class="action-input" type="submit" value="Login"/>
+                    </form>
+                    <h3 class="action-or">OR</h3>
+                    <form action="/" method="GET">
+                        <input class="action-input" type="submit" value="Sign Up"/>
+                    </form>
                 </div>
             </div>
-        </main>        
+            <div class="action-container">
+                <div class="action-header">
+                    <h2 class="action-title">Guests</h2>
+                </div>
+                <div class="action-body">
+                    <form action="/chefs" method="GET">
+                        <input class="action-input" type="submit" value="View Chefs"/>
+                    </form>
+                    <h3 class="action-or">OR</h3>
+                    <form action="/recipes" method="GET">
+                        <input class="action-input" type="submit" value="View Recipes"/>
+                    </form>
+                </div>
+            </div>
+        </div>
 	</body>
 </html>

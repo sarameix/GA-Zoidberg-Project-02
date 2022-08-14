@@ -3,18 +3,59 @@
 /*****************/
 
 body {
-    background-image: url('../images/polka-dot-background.jpg');
-    /* background-color: #FAE8E0; */
-    background-position: center;
-    background-size: 38em;
-    background-repeat: repeat;
+    background-color: #FAE8E0;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
+}
+
+main {
+    margin-top: 125px;
+}
+
+/******************/
+/* Stick Nav Menu */
+/******************/
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+nav {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+
+nav > a {
+    text-decoration: none;
+    font-size: 3em;
+}
+
+span {
+    font-family: 'Dancing Script', cursive;
+}
+
+.other-nav-links > a {
+    text-decoration: none;
 }
 
 /****************/
 /* Landing Page */
 /****************/
+
+.home-master-container {
+    background-image: url('../images/polka-dot-background.jpg');
+    background-position: center;
+    background-size: 38em;
+    background-repeat: repeat;
+}
 
 .home-main {
     display: flex;
@@ -34,7 +75,7 @@ body {
     padding: .05em .1em;
     border: .2em solid #f5b0bb;
     border-radius: 2em;
-    margin: 4em auto 2em auto;
+    margin: 4.5em auto 2em auto;
 }
 
 .home-header {

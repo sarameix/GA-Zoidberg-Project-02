@@ -2,20 +2,10 @@
 <html>
     <%- include ('../partials/head.ejs') %>
 	<body>
-		<header>
-			<nav>
-				<ul>
-					<li>
-						<a href="/">Home</a>
-					</li>
-                    <li>
-                        <a href="/chefs/new">Add New Chef</a>
-                    </li>
-				</ul>
-			</nav>
-		</header>
+        <%- include ('../partials/nav.ejs') %>
         <main>
             <h1>Our Chefs</h1>
+            <a href="/chefs/new">Add New Chef</a>
             <ul>
                 <% for(let i = 0; i < chefs.length; i++){ %>
                     <li>

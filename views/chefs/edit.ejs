@@ -2,18 +2,7 @@
 <html>
     <%- include ('../partials/head.ejs') %>
 	<body>
-		<header>
-			<nav>
-				<ul>
-					<li>
-						<a href="/">Home</a>
-					</li>
-                    <li>
-                        <a href="/chefs/new">Add New Chef</a>
-                    </li>
-				</ul>
-			</nav>
-		</header>
+		<%- include ('../partials/nav.ejs') %>
 		<main>
             <h1>Edit <%=chef.name%></h1>
 			<form action="/chefs/<%=chef._id%>?_method=PUT" method="POST">
