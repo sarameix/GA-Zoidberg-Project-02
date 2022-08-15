@@ -157,7 +157,7 @@ router.get('/rachael', (req, res) => {
             name: "Rachael's Greek-Style Fresh Tomato Sauce",
             yield: "4",
             time: 15,
-            image: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/8/13/1/BF_Sauteed-Kale-1_s4x3.jpg.rend.hgtvcom.826.620.suffix/1382541816255.jpeg",
+            image: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/9/12/0/TM2616H_greek-style-fresh-tomato-sauce_s4x3.jpg.rend.hgtvcom.826.620.suffix/1371599997260.jpeg",
             description: "Kale might not normally be everyone's favorite green, but Bobby Flay's Sateed Kale will change your mind completely! This quick and easy side dish is the perfect healthy accompaniment to any meal.",
             ingredients: [
                 "1 1/2 pounds young kale, stems and leaves coarsely chopped",

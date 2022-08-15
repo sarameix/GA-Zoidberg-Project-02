@@ -67,7 +67,7 @@ module.exports = [
         name: "Rachael's Greek-Style Fresh Tomato Sauce",
         yield: "4-6",
         time: 25,
-        image: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/9/12/0/TM2616H_greek-style-fresh-tomato-sauce_s4x3.jpg.rend.hgtvcom.686.515.suffix/1371599997260.jpeg",
+        image: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/9/12/0/TM2616H_greek-style-fresh-tomato-sauce_s4x3.jpg.rend.hgtvcom.826.620.suffix/1371599997260.jpeg",
         description: "This Greek-Style Fresh Tomato Sauce by Rachael Ray is the perfect recipe for a summer dinner. Go grab some beautiful summer tomatoes from your local farmer's market and get cooking!",
         ingredients: [
             "Salt",
