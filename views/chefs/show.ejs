@@ -4,21 +4,42 @@
 	<body>
 		<%- include ('../partials/nav.ejs') %>
         <main>
-            <h1><%=chef.name%></h1>
-            <section>
-                <form action="/chefs/<%=chef._id%>/edit" method="GET">
-                    <input type="submit" value="Edit"/>
-                </form>
-                <form action="/chefs/<%=chef._id%>?_method=DELETE" method="post">
-                    <input type="submit" value="Delete"/>
-                </form>
-            </section>  
-            <img src="<%=chef.image%>">
-            <p><%=chef.bio%></p>
-            <h2>Recipes</h2>
-            <% for (let i = 0; i < chef.recipes.length; i++) { %>
-                <a href="/recipes/<%=chef.recipes[i]._id%>"><%=chef.recipes[i].name%></a>
-            <% } %>
+            <div class="line"></div>
+            <div class="chef-info-container">
+                <div class="chef-image-container">
+                    <img class="show-chef-image" src="<%=chef.image%>">
+                </div>
+                <div class="chef-description-container">
+                    <h2><%=chef.name%></h2>
+                    <p class="show-chef-description"><%=chef.bio%></p>
+                    <div class="modify-buttons-container">
+                        <form class="inline-form" action="/chefs/<%=chef._id%>/edit" method="GET">
+                            <input class="show-input" type="submit" value="Edit"/>
+                        </form>
+                        <form class="inline-form" action="/chefs/<%=chef._id%>?_method=DELETE" method="post">
+                            <input class="show-input" type="submit" value="Delete"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="show-chef-recipes-master-container">
+                <h2 class="chef-recipe-header"><%=chef.name%>'s Recipes</h2>
+                <div class="line"></div>
+                <div class="show-chef-recipes-container">
+                    <% for (let i = 0; i < chef.recipes.length; i++) { %>
+                        <div class="show-chef-recipe-container">
+                            <a href="/recipes/<%=chef.recipes[i]._id%>">
+                                <img class="show-chef-recipe-image" src="<%=chef.recipes[i].image%>">
+                            </a>
+                            <div class="show-chef-recipe-description-container">
+                                <h3 class="show-recipe-name"><%=chef.recipes[i].name%></h3>
+                                <p class="recipe-description"><%=chef.recipes[i].description.substring(0, 74) + "..."%></p>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
         </main>
         <%- include ('../partials/footer.ejs') %>      
 	</body>

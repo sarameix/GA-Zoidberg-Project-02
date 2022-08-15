@@ -4,18 +4,20 @@
 	<body>
 		<%- include ('../partials/nav.ejs') %>
         <main>
-            <h1><%=recipe.name%></h1>
-            <h2>By <a href="/chefs/<%=chef._id%>"><%=chef.name%></a></h2>
-
-            <section>
-                <form action="/recipes/<%=recipe._id%>/edit" method="GET">
-                    <input type="submit" value="Edit"/>
-                </form>
-                <form action="/recipes/<%=recipe._id%>?_method=DELETE" method="post">
-                    <input type="submit" value="Delete"/>
-                </form>
-            </section>
-
+            <div class="line"></div>
+            <div class="recipe-heading">
+                <h1 class="recipe-header"><%=recipe.name%></h1>
+                <h2>By <a class="recipe-chef-link" href="/chefs/<%=chef._id%>"><%=chef.name%></a></h2>
+                <div class="modify-buttons-container">
+                    <form class="inline-form" action="/recipes/<%=recipe._id%>/edit" method="GET">
+                        <input class="show-input" type="submit" value="Edit"/>
+                    </form>
+                    <form class="inline-form" action="/recipes/<%=recipe._id%>?_method=DELETE" method="post">
+                        <input class="show-input" type="submit" value="Delete"/>
+                    </form>
+                </div>
+            </div>
+            <div class="recipe-divider line"></div>
             <% if (recipe.yield === "1") { %>
                 <h3>Yield: 1 Serving</h3>
             <% } else { %>
@@ -32,14 +34,14 @@
             <% } %>
             <p><%=recipe.description%></p>
             <img src="<%=recipe.image%>">
-
+            <div class="recipe-divider line"></div>
             <h3>Ingredients</h3>
             <ul>
                 <% for (let i = 0; i < recipe.ingredients.length; i++) { %>
                     <li><%=recipe.ingredients[i]%></li>
                 <% } %>
             </ul>
-
+            <div class="recipe-divider line"></div>
             <h3>Directions</h3>
             <ul>
                 <% for (let i = 0; i < recipe.directions.length; i++) { %>

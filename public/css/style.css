@@ -54,7 +54,7 @@ span {
 }
 
 .other-nav-links > a {
-    color: #e85b70;
+    color: #45aa88;
     font-size: 1.3em;
     text-decoration: none;
     margin: 0 .25em 0 1em;
@@ -62,7 +62,7 @@ span {
 }
 
 .other-nav-links > a:hover {
-    color: #5bbf9e;
+    color: #e85b70;
 }
 
 /****************/
@@ -71,6 +71,7 @@ span {
 
 footer {
     padding: 1.5em;
+    margin: 2em 0 0 0;
     box-shadow: 0px -4px 5px 1px rgba(47, 48, 51, 0.15);
     display: flex;
     align-items: center;
@@ -84,7 +85,7 @@ footer {
 }
 
 .footer-script {
-    color: #EF7C8E;
+    color: #e85b70;
     font-size: 1.35em;
 }
 
@@ -257,7 +258,7 @@ footer {
 .sort-form {
     z-index: -1;
     width: 300px;
-    margin: 1.75em 0 1.25em 0;
+    margin: 1.75em 0 1.35em 0;
 }
 
 .pink-label {
@@ -315,7 +316,7 @@ footer {
 }
 
 .recipe-description {
-    font-size: 1em;
+    font-size: .98em;
     padding: .5em 1em;
 }
 
@@ -343,4 +344,152 @@ footer {
     font-size: 1.35em;
     font-weight: 300;
     text-align: center;
+}
+
+/*******************/
+/* Chef Show Pages */
+/*******************/
+
+.chef-info-container {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    padding: 1em;
+    margin: 1em 0;
+}
+
+.chef-description-container {
+    width: 70%;
+    padding: 0 1em 0 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.show-chef-image {
+    width: 325px;
+    height: 325px;
+    object-fit: cover;
+    object-position: 0px 10%;
+    border-radius: 200px;
+    margin: auto;
+}
+
+.modify-buttons-container > * {
+    width: 85px;
+}
+
+.show-input {
+    background-color: #f096a3;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    width: 80px;
+    padding: .2em .3em;
+    border-radius: .5em;
+    border-style: none;
+    margin: 0;
+    cursor: pointer;
+}
+
+.show-input:hover {
+    background-color: #5bbf9e;
+    text-decoration: none;
+}
+
+.chef-recipe-header {
+    margin-left: .5em;
+    margin-bottom: 1em;
+}
+
+.show-chef-recipes-master-container {
+    margin: 2em 0 .25em 0;
+}
+
+.show-chef-recipes-container {
+    width: 95%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 400px);
+    justify-content: center;
+    grid-gap: 30px;
+}
+
+.show-chef-recipe-container {
+    background-color: #d6f1e8;
+    width: 300px;
+    border-radius: 1.5em;
+    margin: 2.85em auto 0 auto;
+    box-shadow: 0px 0px 6px 2px rgba(47, 48, 51, 0.15);
+}
+
+.show-chef-recipe-description-container {
+    background-color: #d6f1e8;
+    border-bottom-left-radius: 1.5em;
+    border-bottom-right-radius: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.show-recipe-name {
+    color: white;
+    background-color: #5bbf9e;
+    width: 300px;
+    padding: .75em .5em;
+    font-size: 1.2em;
+    font-weight: 300;
+    text-align: center;
+}
+
+.show-chef-recipe-image {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    object-position: 0px 10%;
+    border-top-left-radius: 1.5em;
+    border-top-right-radius: 1.5em;
+}
+
+/*********************/
+/* Recipe Show Pages */
+/*********************/
+
+.recipe-divider {
+    margin: 2em 0;
+}
+
+.recipe-heading > h1 {
+    margin-left: .4em;
+}
+
+.recipe-heading > h2 {
+    font-size: 1.75em;
+    margin-left: .6em;
+    margin-bottom: .65em;
+}
+
+.recipe-chef-link {
+    color: #45aa88;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.15em;
+    margin-left: .1em;
+}
+
+.recipe-chef-link:hover {
+    color: #e85b70;
+    text-decoration: none;
+}
+
+.recipe-heading > div {
+    margin-left: 1.25em;
+}
+
+.recipe-header {
+    margin-top: .7em;
 }
