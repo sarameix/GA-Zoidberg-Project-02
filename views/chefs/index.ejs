@@ -7,10 +7,10 @@
             <div class="line"></div>
             <h1 class="script-font index-heading">Our Chefs</h1>
             <div class="line"></div>
-            <form action="/chefs/new" method="GET">
+            <form class="inline-form" action="/chefs/new" method="GET">
                 <input class="new-input" type="submit" value="+ Add New Chef"/>
             </form>
-            <form class="sort-form" action="/chefs" method="GET">
+            <form class="inline-form sort-form" action="/chefs" method="GET">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <label class="input-group-text pink-label" for="inputGroupSelect01">Sort By</label>
@@ -23,13 +23,17 @@
                     </select>
                 </div>
             </form>
-            <ul>
+            <div class="flex-container">
                 <% for(let i = 0; i < chefs.length; i++){ %>
-                    <li>
-                        <a href="/chefs/<%=chefs[i]._id%>"><%=chefs[i].name%> </a>
-                    </li>
+                    <div class="flex-item chef-container">
+                        <a href="/chefs/<%=chefs[i]._id%>">
+                            <img class="chef-image" src="<%=chefs[i].image%>">
+                        </a>
+                        <h3 class="chef-name"><%=chefs[i].name%></h3>
+                    </div>
                 <% } %>
-            </ul>
-        </main>        
+            </div>
+        </main>
+        <%- include ('../partials/footer.ejs') %>       
 	</body>
 </html>

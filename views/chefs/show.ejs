@@ -19,6 +19,7 @@
             <% for (let i = 0; i < chef.recipes.length; i++) { %>
                 <a href="/recipes/<%=chef.recipes[i]._id%>"><%=chef.recipes[i].name%></a>
             <% } %>
-        </main>        
+        </main>
+        <%- include ('../partials/footer.ejs') %>      
 	</body>
 </html>

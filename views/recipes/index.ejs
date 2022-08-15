@@ -7,10 +7,10 @@
             <div class="line"></div>
             <h1 class="script-font index-heading">Our Recipes</h1>
             <div class="line"></div>
-            <form action="/recipes/new" method="GET">
+            <form class="inline-form" action="/recipes/new" method="GET">
                 <input class="new-input" type="submit" value="+ Add New Recipe"/>
             </form>
-            <form class="sort-form" action="/recipes" method="GET">
+            <form class="inline-form sort-form" action="/recipes" method="GET">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <label class="input-group-text pink-label" for="inputGroupSelect01">Sort By</label>
@@ -29,12 +29,13 @@
                             <img class="recipe-image" src="<%=recipes[i].image%>">
                         </a>
                         <div class="description-container">
-                            <h3><%=recipes[i].name%></h3>
-                            <p><%=recipes[i].description.substring(0, 100) + "..."%></p>
+                            <h3 class="recipe-name"><%=recipes[i].name%></h3>
+                            <p class="recipe-description"><%=recipes[i].description.substring(0, 102) + "..."%></p>
                         </div>
                     </div>
                 <% } %>
             </div>
-        </main>        
+        </main>
+        <%- include ('../partials/footer.ejs') %>    
 	</body>
 </html>

@@ -2,7 +2,7 @@ module.exports = [
     {
         name: "Guy Fieri",
         bio: "Before I was the likeable, laid-back California guy with my trademark bleached-blond spiky hair, I began my love affair with food at the age of 10. I sold soft pretzels from a three-wheeled bicycle cart (named “The Awesome Pretzel”) that I built with my father. By selling pretzels and washing dishes, I earned enough money in six years to study abroad as an exchange student in Chantilly, France. There, I gained a profound appreciation for international cuisine and the lifestyle associated with it. I attended University of Nevada Las Vegas, where he graduated with a bachelor’s degree in hospitality management. In 2006, I premiered my first show, Guy's Big Bite, and the rest is history.",
-        image: "https://cdn.shopify.com/s/files/1/0254/5969/articles/Guy_Headshot_700x700_crop_center.jpg?v=1631303944",
+        image: "https://www.harrywalker.com/media/14983309/fieri_guy-official-292022-hdsht.jpg?anchor=center&mode=crop&width=362&height=449&rnd=132929581200000000",
         recipes: []
     },
     {

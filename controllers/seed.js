@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
         {
             name: "Guy Fieri",
             bio: "Before I was the likeable, laid-back California guy with my trademark bleached-blond spiky hair, I began my love affair with food at the age of 10. I sold soft pretzels from a three-wheeled bicycle cart (named “The Awesome Pretzel”) that I built with my father. By selling pretzels and washing dishes, I earned enough money in six years to study abroad as an exchange student in Chantilly, France. There, I gained a profound appreciation for international cuisine and the lifestyle associated with it. I attended University of Nevada Las Vegas, where he graduated with a bachelor’s degree in hospitality management. In 2006, I premiered my first show, Guy's Big Bite, and the rest is history.",
-            image: "https://cdn.shopify.com/s/files/1/0254/5969/articles/Guy_Headshot_700x700_crop_center.jpg?v=1631303944",
+            image: "https://www.harrywalker.com/media/14983309/fieri_guy-official-292022-hdsht.jpg?anchor=center&mode=crop&width=362&height=449&rnd=132929581200000000",
             recipes: []
         },
         (error, data) => {}
@@ -154,22 +154,31 @@ router.get('/rachael', (req, res) => {
     // Create Final Recipe and Add to Rachael Ray Recipes
     Recipe.create(
         {
-            name: "Rachael's Greek-Style Fresh Tomato Sauce",
+            name: "Rachael's Greek-Style Tomato Sauce",
             yield: "4",
-            time: 15,
+            time: 25,
             image: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/9/12/0/TM2616H_greek-style-fresh-tomato-sauce_s4x3.jpg.rend.hgtvcom.826.620.suffix/1371599997260.jpeg",
-            description: "Kale might not normally be everyone's favorite green, but Bobby Flay's Sateed Kale will change your mind completely! This quick and easy side dish is the perfect healthy accompaniment to any meal.",
+            description: "This Greek-Style Fresh Tomato Sauce by Rachael Ray is the perfect recipe for a summer dinner. Go grab some beautiful summer tomatoes from your local farmer's market and get cooking!",
             ingredients: [
-                "1 1/2 pounds young kale, stems and leaves coarsely chopped",
-                "3 tablespoons olive oil",
-                "2 cloves garlic, finely sliced",
-                "1/2 cup vegetable stock or water",
-                "Salt and pepper",
-                "2 tablespoons red wine vinegar"
+                "Salt",
+                "2 tablespoons extra virgin olive oil",
+                "2 tablespoons butter",
+                "1 tablespoon fresh oregano leaves, finely chopped",
+                "4 cloves garlic, chopped",
+                "1 large red onion, chopped",
+                "1/2 cup dry white wine",
+                "2 pints cherry tomatoes, halved if large",
+                "Freshly ground pepper",
+                "1 pound penne with ridges (penne rigate)",
+                "12 ounces Greek feta, crumbled (about 1 1/4 cups)",
+                "1/4 cup fresh mint leaves",
+                "1/2 cup fresh flat-leaf parsley leaves"
             ],
             directions: [
-                "Heat olive oil in a large saucepan over medium-high heat. Add the garlic and cook until soft, but not colored. Raise heat to high, add the stock and kale and toss to combine. Cover and cook for 5 minutes. Remove cover and continue to cook, stirring until all the liquid has evaporated. Season with salt and pepper to taste and add vinegar.",
-                "Serve and enjoy!"
+                "Bring a large pot of salted water to a boil for the pasta.",
+                "Heat the extra virgin olive oil in a large skillet or pot with a tight-fitting lid over medium to medium-high heat. Melt the butter into the oil. When the butter begins to foam, add the oregano, garlic and onions and cook until softened, about 5 minutes. Add the wine and cook for 1 minute. Add the tomatoes and season with salt and pepper. Cover and cook until the tomatoes have burst and the sauce is thickened, 12 to 15 minutes.",
+                "Meanwhile, add the pasta to the boiling water and cook until al dente. Reserve 1/2 cup of the cooking liquid, then drain the pasta.",
+                "Stir the sauce, then add the feta and cook until melted, about 1 minute. Add the pasta and the reserved cooking liquid and toss to combine, 1 to 2 minutes. Top with the mint and parsley, and serve."
             ]
         },
         (error, createdRecipe) => {
