@@ -3,13 +3,14 @@
 /*****************/
 
 body {
-    background-color: #FAE8E0;
+    background-color: #ffffff;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
 }
 
 main {
-    margin-top: 125px;
+    margin-top: 120px;
+    padding: 1em;
 }
 
 /******************/
@@ -17,14 +18,16 @@ main {
 /******************/
 
 header {
+    z-index: 1;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    box-shadow: 0px 0px 7px 5px rgba(47, 48, 51, 0.2);
 }
 
 nav {
-    background-color: white;
+    background-color: #ffffff;
     display: flex;
     flex-direction: row;
     flex-wrap: none;
@@ -34,8 +37,15 @@ nav {
 }
 
 nav > a {
+    color: #e85b70;
     text-decoration: none;
     font-size: 3em;
+    margin-left: .15em;
+}
+
+nav > a:hover {
+    color: #5bbf9e;
+    text-decoration: none;
 }
 
 span {
@@ -43,7 +53,15 @@ span {
 }
 
 .other-nav-links > a {
+    color: #e85b70;
+    font-size: 1.3em;
     text-decoration: none;
+    margin: 0 .25em 0 .5em;
+
+}
+
+.other-nav-links > a:hover {
+    color: #5bbf9e;
 }
 
 /****************/
@@ -162,5 +180,86 @@ span {
 }
 
 .shadow {
-    box-shadow: 0px 0px .5em .2em rgba(47, 48, 51, 0.1);
+    box-shadow: 0px 0px 20px 20px rgba(47, 48, 51, 0.1);
+}
+
+/***************/
+/* Index Pages */
+/***************/
+
+.index-heading {
+    text-align: center;
+    font-size: 3em;
+    margin: .35em 0;
+}
+
+.line {
+    background-color: black;
+    height: 1px;
+    width: 100%;
+}
+
+.new-input {
+    background-color: #f096a3;
+    color: white;
+    font-size: 1.07em;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    padding: .25em .5em;
+    border-radius: .25em;
+    border-style: none;
+    margin: 1em 0;
+    cursor: pointer;
+}
+
+.new-input:hover {
+    color: white;
+    background-color: #77b8a2;
+}
+
+.script-font {
+    font-family: 'Dancing Script', cursive;
+}
+
+.sort-form {
+    z-index: -1;
+    width: 300px;
+    margin-bottom: 3em;
+}
+
+.pink-label {
+    background-color: #f096a3;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.sort-submit {
+    background-color: #f096a3;
+    height: 50%;
+    padding: 0 .5em;
+    border-radius: .25em;
+    border-style: none;
+    margin-left: .2em;
+    cursor: pointer;
+}
+
+.flex-container {
+    width: 95%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 400px);
+    justify-content: center;
+    grid-gap: 20px;
+}
+
+.recipe-container {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.recipe-image {
+    width: 400px;
 }

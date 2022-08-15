@@ -16,7 +16,7 @@ const recipeSchema = mongoose.Schema({
     description: { type: String },
 	ingredients: [String],
     directions: [String]
-});
+}, {timestamps: true});
 
 ////////////////////////////////////////
 // MAKE COLLECTION WITH RECIPE SCHEMA //

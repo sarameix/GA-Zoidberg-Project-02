@@ -18,7 +18,7 @@ const chefSchema = mongoose.Schema({
     bio: { type: String },
     image: { type: String },
 	recipes: [Recipe.schema]
-});
+}, {timestamps: true});
 
 //////////////////////////////////////
 // MAKE COLLECTION WITH CHEF SCHEMA //

@@ -4,17 +4,37 @@
 	<body>
         <%- include ('../partials/nav.ejs') %>
         <main>
-            <h1>Our Recipes</h1>
-            <a href="/recipes/new">Add New Recipe</a>
-            <ul>
+            <div class="line"></div>
+            <h1 class="script-font index-heading">Our Recipes</h1>
+            <div class="line"></div>
+            <form action="/recipes/new" method="GET">
+                <input class="new-input" type="submit" value="+ Add New Recipe"/>
+            </form>
+            <form class="sort-form" action="/recipes" method="GET">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text pink-label" for="inputGroupSelect01">Sort By</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01" name="sortBy" onchange="if(this.value != 0) { this.form.submit(); }">
+                        <option value="none" <% if (select === "none") { %> selected <% } %>>Choose Sort Option...</option>
+                        <option value="mostRecent" <% if (select === "recent") { %> selected <% } %>>Most Recent</option>
+                        <option value="recipeName" <% if (select === "alphabetically") { %> selected <% } %>>Recipe Name</option>
+                    </select>
+                </div>
+            </form>
+            <div class="flex-container">
                 <% for(let i = 0; i < recipes.length; i++){ %>
-                    <li>
+                    <div class="flex-item recipe-container">
                         <a href="/recipes/<%=recipes[i]._id%>">
-                            <%=recipes[i].name%>
+                            <img class="recipe-image" src="<%=recipes[i].image%>">
                         </a>
-                    </li>
+                        <div class="description-container">
+                            <h3><%=recipes[i].name%></h3>
+                            <p><%=recipes[i].description.substring(0, 100) + "..."%></p>
+                        </div>
+                    </div>
                 <% } %>
-            </ul>
+            </div>
         </main>        
 	</body>
 </html>

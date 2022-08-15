@@ -4,8 +4,25 @@
 	<body>
         <%- include ('../partials/nav.ejs') %>
         <main>
-            <h1>Our Chefs</h1>
-            <a href="/chefs/new">Add New Chef</a>
+            <div class="line"></div>
+            <h1 class="script-font index-heading">Our Chefs</h1>
+            <div class="line"></div>
+            <form action="/chefs/new" method="GET">
+                <input class="new-input" type="submit" value="+ Add New Chef"/>
+            </form>
+            <form class="sort-form" action="/chefs" method="GET">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text pink-label" for="inputGroupSelect01">Sort By</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01" name="sortBy" onchange="if(this.value != 0) { this.form.submit(); }">
+                        <option value="none" <% if (select === "none") { %> selected <% } %>>
+                        Choose Sort Option...</option>
+                        <option value="mostRecent" <% if (select === "recent") { %> selected <% } %>>Most Recent</option>
+                        <option value="chefName" <% if (select === "alphabetically") { %> selected <% } %>>Chef Name</option>
+                    </select>
+                </div>
+            </form>
             <ul>
                 <% for(let i = 0; i < chefs.length; i++){ %>
                     <li>

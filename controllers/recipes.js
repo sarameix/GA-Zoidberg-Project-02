@@ -18,20 +18,40 @@ const recipeSeed = require('../models/recipes_seed.js');
 ////////////
 
 // Delete Individual Recipe Route
-router.delete('/:id', (req, res)=>{
+router.delete('/:id', (req, res) => {
     Recipe.findByIdAndRemove(req.params.id, (error, foundRecipe) => {
         res.redirect('/recipes');
     });
 });
 
 // Get Recipes Index Route
-router.get('/', (req, res)=>{
-	Recipe.find({}, (err, foundRecipes)=>{
-		res.render('recipes/index.ejs', {
-			recipes: foundRecipes,
-            pageTitle: "Our Recipes"
+router.get('/', (req, res) => {
+	// Determine Action Based on Selected Sort Type
+	if (req.query.sortBy === "mostRecent") { // Most Recent Recipes
+		Recipe.find({}).sort({updatedAt: 1}).exec((err, foundRecipes) => {  
+			res.render('recipes/index.ejs', {
+				recipes: foundRecipes,
+				pageTitle: "Our Recipes",
+				select: "recent"
+			});
 		});
-	})
+	} else if (req.query.sortBy === "recipeName") { // Alphabetically
+		Recipe.find({}).sort({name: 1}).exec((err, foundRecipes) => {  
+			res.render('recipes/index.ejs', {
+				recipes: foundRecipes,
+				pageTitle: "Our Recipes",
+				select: "alphabetically"
+			});
+		});
+	} else { // Display Page Regularly if No Sort Option
+		Recipe.find({}, (error, foundRecipes) => {
+			res.render('recipes/index.ejs', {
+				recipes: foundRecipes,
+				pageTitle: "Our Recipes",
+				select: "none"
+			});
+		});
+	}	
 });
 
 // Get New Recipe Route

@@ -26,12 +26,32 @@ router.delete('/:id', (req, res)=>{
 
 // Get Chefs Index Route
 router.get('/', (req, res) => {
-	Chef.find({}, (error, foundChefs) => {
-		res.render('chefs/index.ejs', {
-			chefs: foundChefs,
-            pageTitle: "Our Chefs"
+	// Determine Action Based on Selected Sort Type
+	if (req.query.sortBy === "mostRecent") { // Most Recent Chefs
+		Chef.find({}).sort({updatedAt: 1}).exec((err, foundChefs) => {  
+			res.render('chefs/index.ejs', {
+				chefs: foundChefs,
+				pageTitle: "Our Chefs",
+				select: "recent"
+			});
 		});
-	})
+	} else if (req.query.sortBy === "chefName") { // Alphabetically
+		Chef.find({}).sort({name: 1}).exec((err, foundChefs) => {  
+			res.render('chefs/index.ejs', {
+				chefs: foundChefs,
+				pageTitle: "Our Chefs",
+				select: "alphabetically"
+			});
+		});
+	} else { // Display Page Regularly if No Sort Option
+		Chef.find({}, (error, foundChefs) => {
+			res.render('chefs/index.ejs', {
+				chefs: foundChefs,
+				pageTitle: "Our Chefs",
+				select: "none"
+			});
+		});
+	}	
 });
 
 // Get New Chef Route
