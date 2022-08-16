@@ -490,6 +490,10 @@ footer {
     margin-left: 1.25em;
 }
 
-.recipe-header {
+.recipe-main-header {
     margin-top: .7em;
+}
+
+.recipe-subheader {
+    margin-left: .75em;
 }

@@ -6,7 +6,7 @@
         <main>
             <div class="line"></div>
             <div class="recipe-heading">
-                <h1 class="recipe-header"><%=recipe.name%></h1>
+                <h1 class="recipe-main-header"><%=recipe.name%></h1>
                 <h2>By <a class="recipe-chef-link" href="/chefs/<%=chef._id%>"><%=chef.name%></a></h2>
                 <div class="modify-buttons-container">
                     <form class="inline-form" action="/recipes/<%=recipe._id%>/edit" method="GET">
@@ -19,12 +19,12 @@
             </div>
             <div class="recipe-divider line"></div>
             <% if (recipe.yield === "1") { %>
-                <h3>Yield: 1 Serving</h3>
+                <h3 class="recipe-subheader">Yield: 1 Serving</h3>
             <% } else { %>
-                <h3>Yield: <%=recipe.yield%> Servings</h3>
+                <h3 class="recipe-subheader">Yield: <%=recipe.yield%> Servings</h3>
             <% } %>
             <% if (recipe.time < 60) { %>
-                <h3>Time: <%=recipe.time%> Minutes</h3>
+                <h3 class="recipe-subheader">Time: <%=recipe.time%> Minutes</h3>
             <% } else { %>
             <%      if (Math.floor(recipe.time / 60) === 1) { %>
                         <h3>Time: 1 Hour <%=recipe.time % 60%> Minutes</h3>
@@ -35,14 +35,14 @@
             <p><%=recipe.description%></p>
             <img src="<%=recipe.image%>">
             <div class="recipe-divider line"></div>
-            <h3>Ingredients</h3>
+            <h3 class="recipe-subheader">Ingredients</h3>
             <ul>
                 <% for (let i = 0; i < recipe.ingredients.length; i++) { %>
                     <li><%=recipe.ingredients[i]%></li>
                 <% } %>
             </ul>
             <div class="recipe-divider line"></div>
-            <h3>Directions</h3>
+            <h3 class="recipe-subheader">Directions</h3>
             <ul>
                 <% for (let i = 0; i < recipe.directions.length; i++) { %>
                     <li><%=recipe.directions[i]%></li>
