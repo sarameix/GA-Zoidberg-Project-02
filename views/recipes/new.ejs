@@ -16,15 +16,18 @@
                 // Function Adding Ingredient Input
                 const addIngredientInput = () => {
                     ingredientCount++;
-
+                    
                     let newDiv = document.createElement("div");
                     newDiv.setAttribute("id", "new-ingredient-" + ingredientCount + "-div");
+                    newDiv.classList.add("form-group");
                     document.getElementById("new-add-new-ingredients").appendChild(newDiv);
 
                     let newInput = document.createElement("input");
                     newInput.setAttribute("type", "text");
                     newInput.setAttribute("name", "ingredient" + ingredientCount);
-                    newInput.setAttribute("placeholder", "Ingredient");
+                    newInput.setAttribute("placeholder", "Ingredient " + ingredientCount);
+                    newInput.setAttribute("id", "new-ingredient-" + ingredientCount + "-label");
+                    newInput.classList.add("form-control");
                     newDiv.appendChild(newInput);
                 };
 
@@ -34,34 +37,69 @@
 
                     let newDiv = document.createElement("div");
                     newDiv.setAttribute("id", "new-direction-" + directionsCount + "-div");
+                    newDiv.classList.add("form-group");
                     document.getElementById("new-add-new-directions").appendChild(newDiv);
 
                     let newInput = document.createElement("textarea");
-                    newInput.setAttribute("type", "text");
+                    newDiv.setAttribute("id", "new-direction-" + directionsCount + "-text-area");
+                    newInput.setAttribute("rows", "3");
                     newInput.setAttribute("name", "direction" + directionsCount);
-                    newInput.setAttribute("placeholder", "Direction");
+                    newInput.setAttribute("placeholder", "Direction " + directionsCount);
+                    newInput.classList.add("form-control");
                     newDiv.appendChild(newInput);
                 };
             </script>
             
             <!-- HTML Elements for Main Portion of Page -->
-            <h1>Create New Recipe</h1>
-			<form action="/recipes" method="POST">
-				<input type="text" name="name" placeholder="Recipe Name" /><br/>
-                <select name="chefID">
-                    <% for(let i = 0; i < chefs.length; i++) { %>
-                        <option value="<%=chefs[i]._id%>"><%=chefs[i].name%></option>
-                    <% } %>
-                </select><br/>
-                <input type="text" name="yield" placeholder="Yield (In Servings)" /><br/>
-                <input type="number" name="hours" min=0 placeholder="Hours" />
-                <input type="number" name="minutes" min=0 placeholder="Minutes" /><br/>
-                <input type="text" name="image" placeholder="Recipe Image URL" /><br/>
-                <textarea name="description" placeholder="Type Description Here..."></textarea><br/>
-                <div id="new-add-new-ingredients"></div>
-                <input type="button" value="+ Add Ingredient" onClick="addIngredientInput()"><br/>
-                <div id="new-add-new-directions"></div>
-                <input type="button" value="+ Add Direction" onClick="addDirectionInput()"><br/>
+            <div class="shorter-line"></div>
+            <h1 class="index-heading script-font">Create New Recipe</h1>
+			<div class="shorter-line"></div>
+			<form class="input-form" action="/recipes" method="POST">
+                <div class="form-group">
+					<label for="recipeNameInput">Recipe Name</label>
+					<input type="text" class="form-control" id="recipeNameInput" name="name" placeholder="Recipe Name">
+				</div>
+                <div class="form-group">
+                    <label for="recipeChefName">Chef Name</label><br/>
+                    <select class="custom-select" id="recipeChefName" name="chefID">
+                        <% for(let i = 0; i < chefs.length; i++) { %>
+                            <option value="<%=chefs[i]._id%>"><%=chefs[i].name%></option>
+                        <% } %>
+                    </select>
+                </div>
+				<div class="form-group">
+					  <label for="yieldInput">Yield</label>
+					  <input type="text" class="form-control" id="yieldInput" name="yield" placeholder="Yield (In Servings)">
+				</div>
+                <label>Time</label>
+                <div class="form-row align-items-center">
+                    <div class="col-auto">
+                      <label class="sr-only" for="hoursInput">Hours</label>
+                      <input type="number" class="form-control" id="hoursInput" name="hours" min=0 placeholder="Hours">
+                    </div>
+                    <div class="col-auto">
+                        <label class="sr-only" for="minutesInput">Minutes</label>
+                        <input type="number" class="form-control" id="minutesInput" name="minutes" min=0 placeholder="Minutes">
+                    </div>
+                </div><br/>
+                <div class="form-group">
+                    <label for="recipeImageInput">Image</label>
+                    <input type="text" class="form-control" id="recipeImageInput" name="image" placeholder="Recipe Image URL">
+                </div>
+                <div class="form-group">
+					<label for="recipeBio">Description</label>
+					<textarea class="form-control" id="recipeBio" rows="3" name="description" placeholder="Type Description Here..."></textarea>
+				</div>
+                <div class="form-group">
+					<label>Ingredients</label><br/>
+                    <div id="new-add-new-ingredients"></div>
+                    <input class="form-add" type="button" value="+ Add Ingredient" onClick="addIngredientInput()">
+				</div>
+                <div class="form-group">
+					<label>Directions</label><br/>
+                    <div id="new-add-new-directions"></div>
+                    <input class="form-add" type="button" value="+ Add Direction" onClick="addDirectionInput()">
+				</div>
                 <input class="form-submit" type="submit" value="Create Recipe"/>
 			</form>
 		</main>

@@ -56,7 +56,7 @@ router.get('/', (req, res) => {
 
 // Get New Recipe Route
 router.get('/new', (req, res) => {
-    Chef.find({}, (error, allChefs)=>{
+    Chef.find({}).sort({name: 1}).exec((err, allChefs) => {
         res.render('recipes/new.ejs', {
             chefs: allChefs,
             pageTitle: "Add New Recipe"
@@ -78,9 +78,9 @@ router.get('/:id', (req, res) => {
 });
 
 // Get Edit Individual Recipe Page Route
-router.get('/:id/edit', (req, res)=>{
+router.get('/:id/edit', (req, res) => {
     Recipe.findById(req.params.id, (error, foundRecipe)=>{
-		Chef.find({}, (error, allChefs)=>{
+        Chef.find({}).sort({name: 1}).exec((err, allChefs) => {
 			Chef.findOne({'recipes._id':req.params.id}, (error, foundRecipeChef)=>{
 				res.render('recipes/edit.ejs', {
 					recipe: foundRecipe,

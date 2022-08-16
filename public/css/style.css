@@ -502,7 +502,7 @@ footer {
 .recipe-small-header {
     display: inline;
     font-size: 1.3em;
-    margin: 0 .35em 0 0;
+    margin: 0 .6em 0 0;
 }
 
 .recipe-small-header:first-of-type {
@@ -586,6 +586,27 @@ footer {
     background-color: #77b8a2;
 }
 
+.form-add {
+    background-color: #f096a3;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: .95em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    padding: .3em .5em;
+    border-radius: .25em;
+    border-style: none;
+    width: max-content;
+    margin: .5em 0;
+    cursor: pointer;
+}
+
+.form-add:hover {
+    color: white;
+    background-color: #77b8a2;
+}
+
 .input-form {
     width: 450px;
     padding-top: 1.25em;
@@ -595,7 +616,7 @@ footer {
 .shorter-line {
     background-color: black;
     height: 1px;
-    width: 96%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
