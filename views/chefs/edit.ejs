@@ -4,12 +4,23 @@
 	<body>
 		<%- include ('../partials/nav.ejs') %>
 		<main>
-            <h1>Edit <%=chef.name%></h1>
-			<form action="/chefs/<%=chef._id%>?_method=PUT" method="POST">
-				<input type="text" name="name" value="<%=chef.name%>" placeholder="Name" /><br/>
-                <input type="text" name="image" value="<%=chef.image%>" placeholder="Profile Picture URL" /><br/>
-                <textarea name="bio" placeholder="Type Bio Here..."><%=chef.bio%></textarea><br/>
-                <input type="submit" value="Submit Changes"/>
+			<div class="shorter-line"></div>
+            <h1 class="index-heading script-font">Edit <%=chef.name%></h1>
+			<div class="shorter-line"></div>
+			<form class="input-form" action="/chefs/<%=chef._id%>?_method=PUT" method="POST">
+				<div class="form-group">
+					<label for="chefNameInput">Chef Name</label>
+					<input type="text" class="form-control" id="chefNameInput" name="name" value="<%=chef.name%>" placeholder="Name">
+				</div>
+				<div class="form-group">
+					  <label for="chefImageInput">Chef Name</label>
+					  <input type="text" class="form-control" id="chefImageInput" name="image" value="<%=chef.image%>" placeholder="Profile Picture URL">
+				</div>
+				<div class="form-group">
+					<label for="chefBio">Chef Bio</label>
+					<textarea class="form-control" id="chefBio" rows="3" name="bio" placeholder="Type Bio Here..."><%=chef.bio%></textarea>
+				</div>
+                <input class="form-submit" type="submit" value="Submit Changes"/>
 			</form>
 		</main>
 		<%- include ('../partials/footer.ejs') %>

@@ -4,12 +4,23 @@
 	<body>
 		<%- include ('../partials/nav.ejs') %>
 		<main>
-            <h1>Create New Chef</h1>
-			<form action="/chefs" method="POST">
-				<input type="text" name="name" placeholder="Name" /><br/>
-                <input type="text" name="image" placeholder="Profile Picture URL" /><br/>
-                <textarea name="bio" placeholder="Type Bio Here..."></textarea><br/>
-                <input type="submit" value="Create Chef"/>
+			<div class="shorter-line"></div>
+            <h1 class="index-heading script-font">Create New Chef</h1>
+			<div class="shorter-line"></div>
+			<form class="input-form" action="/chefs" method="POST">
+				<div class="form-group">
+					<label for="chefNameInput">Chef Name</label>
+					<input type="text" class="form-control" id="chefNameInput" name="name" placeholder="Name">
+				</div>
+				<div class="form-group">
+					  <label for="chefImageInput">Chef Name</label>
+					  <input type="text" class="form-control" id="chefImageInput" name="image" placeholder="Profile Picture URL">
+				</div>
+				<div class="form-group">
+					<label for="chefBio">Chef Bio</label>
+					<textarea class="form-control" id="chefBio" rows="3" name="bio" placeholder="Type Bio Here..."></textarea>
+				</div>
+                <input class="form-submit" type="submit" value="Create Chef"/>
 			</form>
 		</main>
 		<%- include ('../partials/footer.ejs') %>
