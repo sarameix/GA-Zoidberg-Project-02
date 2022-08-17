@@ -18,13 +18,16 @@
                     ingredientCount++;
 
                     let newDiv = document.createElement("div");
-                    newDiv.setAttribute("id", "edit-ingredient-" + ingredientCount + "-div");
+                    newDiv.setAttribute("id", "new-ingredient-" + ingredientCount + "-div");
+                    newDiv.classList.add("form-group");
                     document.getElementById("edit-add-new-ingredients").appendChild(newDiv);
 
                     let newInput = document.createElement("input");
                     newInput.setAttribute("type", "text");
                     newInput.setAttribute("name", "ingredient" + ingredientCount);
                     newInput.setAttribute("placeholder", "Ingredient");
+                    newInput.setAttribute("id", "new-ingredient-" + ingredientCount + "-label");
+                    newInput.classList.add("form-control");
                     newDiv.appendChild(newInput);
                 };
 
@@ -33,13 +36,16 @@
                     directionsCount++;
 
                     let newDiv = document.createElement("div");
-                    newDiv.setAttribute("id", "edit-direction-" + directionsCount + "-div");
+                    newDiv.setAttribute("id", "new-direction-" + directionsCount + "-div");
+                    newDiv.classList.add("form-group");
                     document.getElementById("edit-add-new-directions").appendChild(newDiv);
 
                     let newInput = document.createElement("textarea");
-                    newInput.setAttribute("type", "text");
+                    newDiv.setAttribute("id", "new-direction-" + directionsCount + "-text-area");
+                    newInput.setAttribute("rows", "3");
                     newInput.setAttribute("name", "direction" + directionsCount);
                     newInput.setAttribute("placeholder", "Direction");
+                    newInput.classList.add("form-control");
                     newDiv.appendChild(newInput);
                 };
             </script>
@@ -66,6 +72,7 @@
                             </option>
                         <% } %>
                     </select>
+                    <p class="new-chef-p">Don't see your name? Add Yourself <a class="new-chef-a" href="/chefs/new">here</a>.</p>
                 </div>
 				<div class="form-group">
 					  <label for="yieldInput">Yield</label>
@@ -75,11 +82,11 @@
                 <div class="form-row align-items-center">
                     <div class="col-auto">
                       <label class="sr-only" for="hoursInput">Hours</label>
-                      <input type="number" class="form-control" id="hoursInput" name="hours" min=0 value="<%=Math.floor(recipe.time / 60)%>" placeholder="Hours">
+                      <input type="number" class="form-control inline-form2" id="hoursInput" name="hours" min=0 value="<%=Math.floor(recipe.time / 60)%>" placeholder="Hours">
                     </div>
                     <div class="col-auto">
                         <label class="sr-only" for="minutesInput">Minutes</label>
-                        <input type="number" class="form-control" id="minutesInput" name="minutes" min=0 value="<%=recipe.time % 60%>" placeholder="Minutes">
+                        <input type="number" class="form-control inline-form2" id="minutesInput" name="minutes" min="0" max="59" value="<%=recipe.time % 60%>" placeholder="Minutes">
                     </div>
                 </div><br/>
                 <div class="form-group">
@@ -92,7 +99,7 @@
 				</div>
                 <div class="form-group">
 					<label>Ingredients</label><br/>
-                    <div id="new-add-new-ingredients">
+                    <div id="edit-add-new-ingredients">
                         <% for (let i = 0; i < recipe.ingredients.length; i++) { %>
                             <div id="edit-ingredient-<%=i+1%>-div" class="form-group">
                                 <input class="form-control" type="text" id=<%="new-ingredient-"+(i+1)+"-label"%> name="ingredient<%=i+1%>" value="<%=recipe.ingredients[i]%>" placeholder="Ingredient">
@@ -103,7 +110,7 @@
 				</div>
                 <div class="form-group">
 					<label>Directions</label><br/>
-                    <div id="new-add-new-directions">
+                    <div id="edit-add-new-directions">
                         <% for (let i = 0; i < recipe.directions.length; i++) { %>
                             <div id="edit-direction-<%=i+1%>-div" class="form-group">
                                 <textarea class="form-control" id=<%="new-direction-"+(i+1)+"-label"%> name="direction<%=i+1%>" placeholder="Direction"><%=recipe.directions[i]%></textarea>

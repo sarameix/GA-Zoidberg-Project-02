@@ -25,7 +25,7 @@
                     let newInput = document.createElement("input");
                     newInput.setAttribute("type", "text");
                     newInput.setAttribute("name", "ingredient" + ingredientCount);
-                    newInput.setAttribute("placeholder", "Ingredient " + ingredientCount);
+                    newInput.setAttribute("placeholder", "Ingredient");
                     newInput.setAttribute("id", "new-ingredient-" + ingredientCount + "-label");
                     newInput.classList.add("form-control");
                     newDiv.appendChild(newInput);
@@ -44,7 +44,7 @@
                     newDiv.setAttribute("id", "new-direction-" + directionsCount + "-text-area");
                     newInput.setAttribute("rows", "3");
                     newInput.setAttribute("name", "direction" + directionsCount);
-                    newInput.setAttribute("placeholder", "Direction " + directionsCount);
+                    newInput.setAttribute("placeholder", "Direction");
                     newInput.classList.add("form-control");
                     newDiv.appendChild(newInput);
                 };
@@ -54,6 +54,8 @@
             <div class="shorter-line"></div>
             <h1 class="index-heading script-font">Create New Recipe</h1>
 			<div class="shorter-line"></div>
+
+            <!-- Create Form -->
 			<form class="input-form" action="/recipes" method="POST">
                 <div class="form-group">
 					<label for="recipeNameInput">Recipe Name</label>
@@ -66,6 +68,7 @@
                             <option value="<%=chefs[i]._id%>"><%=chefs[i].name%></option>
                         <% } %>
                     </select>
+                    <p class="new-chef-p">Don't see your name? Add Yourself <a class="new-chef-a" href="/chefs/new">here</a>.</p>
                 </div>
 				<div class="form-group">
 					  <label for="yieldInput">Yield</label>
@@ -75,11 +78,11 @@
                 <div class="form-row align-items-center">
                     <div class="col-auto">
                       <label class="sr-only" for="hoursInput">Hours</label>
-                      <input type="number" class="form-control" id="hoursInput" name="hours" min=0 placeholder="Hours">
+                      <input type="number" class="form-control inline-form2" id="hoursInput" name="hours" min=0 placeholder="Hours">
                     </div>
                     <div class="col-auto">
                         <label class="sr-only" for="minutesInput">Minutes</label>
-                        <input type="number" class="form-control" id="minutesInput" name="minutes" min=0 placeholder="Minutes">
+                        <input type="number" class="form-control inline-form2" id="minutesInput" name="minutes" min="0" max="59" placeholder="Minutes">
                     </div>
                 </div><br/>
                 <div class="form-group">

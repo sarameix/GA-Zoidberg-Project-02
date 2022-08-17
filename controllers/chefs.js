@@ -19,9 +19,22 @@ const chefSeed = require('../models/chefs_seed.js');
 
 // Delete Individual Chef Route
 router.delete('/:id', (req, res)=>{
-    Chef.findByIdAndRemove(req.params.id, (error, foundChef) => {
-        res.redirect('/chefs');
-    });
+	Chef.findByIdAndRemove(req.params.id, (error, foundChef) => {
+		const recipeIDs = [];
+		for (let i = 0; i < foundChef.recipes.length; i++) {
+			recipeIDs.push(foundChef.recipes[i]._id);
+		}
+		Recipe.remove(
+			{
+				_id : {
+					$in: recipeIDs
+				}
+			},
+			(error, data) => {
+				res.redirect('/chefs');
+			}
+		);
+	});
 });
 
 // Get Chefs Index Route
